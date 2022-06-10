@@ -26,5 +26,5 @@ https://core.telegram.org/api
 https://docs.aiogram.dev/en/latest/
 
 ### Статьи с примерами aiogram:
-https://surik00.gitbooks.io/aiogram-lessons/content/
-https://mastergroosha.github.io/telegram-tutorial-2/quickstart/
+https://surik00.gitbooks.io/aiogram-lessons/content/  
+https://mastergroosha.github.io/telegram-tutorial-2/quickstart/  
