@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+import sys
 import logging
 import yaml
+import re
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-import re
 
 # Singleton
 class Log(object):
@@ -40,6 +41,14 @@ class Config(object):
     def get_config(self):
         return self.config
 
+    def get_bot_token(self):
+        if len(sys.argv) > 1:
+            return sys.argv[1]
+        elif self.config['TELEGRAM']['TOKEN']:
+            return self.config['TELEGRAM']['TOKEN']
+        else:
+            raise Exception("No Bot-token provided. Use command-line arg or config.yaml")
+
 # Singleton
 class MyBot(object):
 
@@ -50,7 +59,7 @@ class MyBot(object):
 
     def __init__(self):
         self.storage = MemoryStorage()
-        self.bot = Bot(token=Config().get_config()['TELEGRAM']['TOKEN'])
+        self.bot = Bot(token=Config().get_bot_token())
         self.dp = Dispatcher(self.bot, storage=self.storage)
         self.cnt = [1]
 
