@@ -60,8 +60,10 @@ async def answer(message: types.Message):
     p = re.search("["+glas+"]+", last_word)
     if p:
         ind = p.end()
-        msg = ''.join(["Ху", changed_glas[last_word[ind-1]], last_word[ind:], '!'])
-        await message.reply(msg)
+        word = ''.join(["Ху", changed_glas[last_word[ind-1]], last_word[ind:]])
+        if(word.lower() != last_word):
+            msg = re.sub(r'\W+$', "!", word)
+            await message.reply(msg)
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
