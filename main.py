@@ -57,10 +57,10 @@ async def answer(message: types.Message):
     
     arr = message.text.split()
     last_word = arr[len(arr) - 1].lower()
-    p = re.search("["+glas+"]", last_word)
+    p = re.search("["+glas+"]+", last_word)
     if p:
-        ind = p.start()
-        msg = ''.join(["Ху", changed_glas[last_word[ind]], last_word[ind+1:], '!'])
+        ind = p.end()
+        msg = ''.join(["Ху", changed_glas[last_word[ind-1]], last_word[ind:], '!'])
         await message.reply(msg)
 
 if __name__ == "__main__":

@@ -6,6 +6,15 @@
 # Установить зависимости:
 ```pip install -r requirements.txt```
 
+# Подключить БД
+
+### Скачивание, создание и запуск контейнера с mongoDB:
+```sh
+docker pull mongo  
+docker container create mongo:latest  
+docker container run -d -p 27017:27017 --name test-mongo mongo:latest  
+```
+
 # Запустить
 ```sudo python ./main.py```
 
